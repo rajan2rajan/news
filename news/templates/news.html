@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block content %}
+
+<style>
+    .fake {
+        height: 30px;
+        overflow: hidden;
+    }
+</style>
+
+<form method="POST">
+    <div class="row">
+
+
+        {% if data|length < 1 %} 
+            <p style="color:black;padding:50px">Your search - {{query}} ... - did not match any documents.<br><br> Suggestions:
+
+            <br><br>
+
+            <ul><br><br><br><br><br><br><br><br><br><br>
+                <li>Make sure that all words are spelled correctly.</li><br>
+                <li>Try different keywords.</li><br>
+                <li>Try more general keywords.</li><br>
+                <li>Try fewer keywords.</li>
+            </ul>
+
+            </p>
+
+
+        {% else %} 
+            {% for news in data %}
+            <div class="col-sm-6">
+
+                <a href="{{news.slug}}">
+                {% comment %} here slug we are using are models slug {% endcomment %}
+                
+                <h3>{{news.title}} </h3>
+                <span><img src="/media/{{news.image}}" width="700" height="400"></span>
+
+                <p>{{news.newsby}}</p>
+
+                <div class="fake">{{news.detail |safe}}</div>
+            </a>
+
+            </div>
+            {% endfor %} 
+        {% endif %}
+
+
+
+    </div>
+
+</form>
+
+
+{% endblock %}

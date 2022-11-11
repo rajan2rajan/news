@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+
+<style>
+    .form1 {
+        background-color: antiquewhite;
+    }
+    
+    .control {
+        padding: 500px;
+    }
+</style>
+
+<div class="form">
+
+    <form method="POST" class="form1">
+        {% csrf_token %}
+        <div class="control">
+            First name: <input type="text" name="fname"><br><br> last name: <input type="text" name="lname"><br><br> email: <input type="email" name="email"><br><br> message: <input type="text" name="message">
+            <br><br><button type="submit" class="btn btn-dark">Submit</button>
+
+        </div>
+
+
+    </form>
+</div>
+
+{% endblock%}
